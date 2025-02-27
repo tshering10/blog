@@ -1,11 +1,12 @@
 {% extends 'blogapp/html/base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Register{% endblock title %}
 {% block content %}
     <div class="container mt-5">
-        <h1 class="mb-4 text-center">Login</h1>
+        <h1 class="mb-4 text-center">Register</h1>
         <form method="POST">
               {% csrf_token %}
-              {{form.as_p}}
+              {{form |crispy}}
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary btn-block mt-2 btn-sm">Login</button>
         </form>

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'blogapp',
     'widget_tweaks',
     'members',
+    "crispy_forms", 
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -130,4 +132,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'  # Redirect to homepage after login
+LOGIN_REDIRECT_URL = 'home'  # Redirect to homepage after login
+LOGOUT_REDIRECT_URL = 'home_view'  # Redirect to homepage after login
+
+
+# django_project/settings.py
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
+CRISPY_TEMPLATE_PACK = "bootstrap5" 

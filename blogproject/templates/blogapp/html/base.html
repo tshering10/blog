@@ -12,6 +12,17 @@
     <title>{% block title %}Daily Dose Blog{% endblock title%}</title>
   </head>
   <body>
+    
+    <!--for messages-->
+    {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <!-- Branding or Blog Logo -->
@@ -25,12 +36,30 @@
           <!-- Navbar Content -->
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto"> <!-- ms-auto: to align to the right -->
-              
-              <!-- Home Link -->
+
+              {% if user.is_authenticated %}
+
               <li class="nav-item">
                 <a class="nav-link active" href="{% url "add_post_view" %}">Add Post</a>
               </li>
-      
+              
+              <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="nav-link btn btn-link">Logout</button>
+              </form>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link " href="{% url "register_view" %}">Register</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="{% url "login" %}">Login</a>
+              </li>
+
+              {% endif %}
+              
               <!-- Categories Dropdown -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,14 +89,7 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </li>
-      
-              <!-- Login/Signup (Optional) -->
-              <li class="nav-item">
-                <a class="nav-link btn btn-outline-success btn-sm ms-2 text-green-700 hover-text-white" href="{% url "login" %}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link btn btn-outline-success btn-sm ms-2 text-green-700 hover-text-white" href="{% url "register_view" %}">Register</a>
-              </li>
+ 
               
             </ul>
           </div>
