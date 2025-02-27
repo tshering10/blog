@@ -1,0 +1,28 @@
+{% extends 'blogapp/html/base.html' %}
+{% block title %}Daily Dose Blog{% endblock title %}
+{% block content %}
+    <h1>Blog Post</h1>
+    <ul class = "no-bullets">
+        {% for post in object_list %}
+            <li><a href="{% url 'detail_view' post.pk %}" class = "text-decoration-none">{{post.title}} | {{post.author.first_name}} {{post.author.last_name}}</a>
+
+            <!--short summary of post-->
+            <p>{{ post.body|slice:":100" }}...</p>
+            
+            <!-- Link to full post -->
+            <a href="{% url 'detail_view' post.pk %}">Read more</a>
+
+            </li>
+
+            <div class="post-actions mt-2">
+                <small>
+                    <a href="{% url 'update_post_view' post.pk %}" class="btn btn-secondary btn-sm m-1 p-1">Edit</a>
+                </small>
+                <small>
+                    <a href="{% url 'delete_post_view' post.pk %}" class="btn btn-secondary btn-sm m-1 p-1">Del</a>
+                </small>
+            </div>
+            
+        {% endfor %}
+    </ul>
+{% endblock content %}

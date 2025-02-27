@@ -1,0 +1,85 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>{% block title %}Daily Dose Blog{% endblock title%}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!-- Branding or Blog Logo -->
+          <a class="navbar-brand fw-bold fs-3" href="{% url "home_view" %}">Daily Dose Blog</a>
+          
+          <!-- Toggler for small screens (mobile view) -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+         
+          <!-- Navbar Content -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto"> <!-- ms-auto: to align to the right -->
+              
+              <!-- Home Link -->
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url "add_post_view" %}">Add Post</a>
+              </li>
+      
+              <!-- Categories Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for category in categories %}
+                      <li><a class="dropdown-item" href="{% url 'category_view' category.slug %}">{{ category.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+      
+              <!-- About Page -->
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+      
+              <!-- Contact Page -->
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+      
+              <!-- Search Bar -->
+              <li class="nav-item">
+                <form class="d-flex" action="/search" method="GET">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </li>
+      
+              <!-- Login/Signup (Optional) -->
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-success btn-sm ms-2 text-green-700 hover-text-white" href="{% url "login" %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-success btn-sm ms-2 text-green-700 hover-text-white" href="{% url "register_view" %}">Register</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <div class="container">
+        {% block content %}
+         {% endblock content %}  
+    </div>
+    
+
+    
+  </body>
+</html>

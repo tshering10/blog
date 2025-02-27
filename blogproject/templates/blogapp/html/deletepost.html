@@ -1,0 +1,16 @@
+{% extends 'blogapp/html/base.html' %}
+{% block title %}Delete Post{% endblock title %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Delete a Post</h1>
+        <br>
+        <h4>Title: {{post.title}}</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Submit Button -->
+             <strong>Are you sure?</strong>
+            <button type="submit" class="btn btn-primary btn-block mt-2 btn-sm">Delete</button>
+        </form>
+    </div>
+{% endblock content %}
