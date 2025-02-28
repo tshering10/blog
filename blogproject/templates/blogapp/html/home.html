@@ -7,11 +7,9 @@
             <li><a href="{% url 'detail_view' post.pk %}" class = "text-decoration-none">{{post.title}} | {{post.author.first_name}} {{post.author.last_name}}</a>
 
             <!--short summary of post-->
-            <p>{{ post.body|slice:":100" }}...</p>
+            <p>{{ post.body|slice:":100" }}...<a href="{% url 'detail_view' post.pk %}">Read more</a></p>
             
-            <!-- Link to full post -->
-            <a href="{% url 'detail_view' post.pk %}">Read more</a>
-
+            
             </li>
 
             {% if user.is_authenticated %}
@@ -28,4 +26,6 @@
             
         {% endfor %}
     </ul>
+
+    
 {% endblock content %}

@@ -1,0 +1,66 @@
+{% extends "blogapp/html/base.html" %}
+
+{% block title %}About Us{% endblock title %}
+
+{% block content %}
+    <style>
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .team-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <h1 class="text-center mt-3">About Us</h1>
+
+    <p class="font-semibold">"Welcome to <span class="highlight">Daily Dose Blog</span>, your go-to resource for a daily dose of everything. Whether you're passionate about technology, a food lover, a sports enthusiast, or someone who enjoys staying on top of the latest trends, we've got something for you. Our blog covers a broad range of topics to keep you informed, entertained, and inspired every single day."</p>
+
+    <p>"I’m <strong>Falano Manxe</strong>, the founder and chief writer here at Daily Dose Blog. With over 10 years of experience in digital content creation, I started this blog with a simple yet ambitious goal: to create a space where readers can get a variety of content in one place, without feeling overwhelmed by too much information. My journey into blogging began from a passion for sharing useful tips and content that could help people improve their daily lives in a meaningful way."</p>
+
+    <p>"What makes Daily Dose Blog different is that we believe in providing content that resonates with everyone. Our approach is simple: we want to make complex topics accessible, fun, and engaging. We don’t just talk about what’s trending; we dive deeper into the ‘why’ and ‘how’ behind the news, trends, and products we discuss. Whether it’s a step-by-step guide, an in-depth review, or an insightful opinion piece, we aim to provide value with every post."</p>
+
+    <p>"We also occasionally bring in guest writers and experts from various industries to offer fresh perspectives and specialized knowledge. This way, we ensure that our content remains dynamic, diverse, and up-to-date with the latest trends in every field we cover."</p>
+
+    <p>"Our vision is simple: To become your go-to platform for discovering new things, whether it’s the latest tech innovation, a delicious recipe, or exciting sports analysis. We believe that knowledge is power, and by making this knowledge accessible, we hope to inspire curiosity and creativity in our readers."</p>
+
+    <div class="team-section">
+        <div class="team-member">
+            <img src="path_to_your_image/jane_smith.jpg" alt="Euta Manxe">
+            <p><strong>Euta Manxe</strong><br>Tech Writer & Gadget Enthusiast</p>
+        </div>
+        <div class="team-member">
+            <img src="path_to_your_image/alex_lee.jpg" alt="Duita Manxe">
+            <p><strong>Duita Manxe</strong><br>Sports Analyst & Commentator</p>
+        </div>
+        <div class="team-member">
+            <img src="path_to_your_image/maria_garcia.jpg" alt="Tinta Manxe">
+            <p><strong>Tinta Manxe</strong><br>Food Blogger & Recipe Developer</p>
+        </div>
+    </div>
+
+    <p>"Have questions, feedback, or want to collaborate with us? We’d love to hear from you! Feel free to reach out via our <a href="{% url "contact_us" %}">[Contact Us]</a> page. Don’t forget to subscribe to our newsletter for weekly updates on all things Daily Dose!"</p>
+
+{% endblock content %}

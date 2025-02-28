@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'members',
     "crispy_forms", 
-    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -137,5 +136,5 @@ LOGOUT_REDIRECT_URL = 'home_view'  # Redirect to homepage after login
 
 
 # django_project/settings.py
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
-CRISPY_TEMPLATE_PACK = "bootstrap5" 
+
+

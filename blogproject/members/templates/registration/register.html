@@ -1,14 +1,23 @@
 {% extends 'blogapp/html/base.html' %}
-{% load crispy_forms_tags %}
 {% block title %}Register{% endblock title %}
+{% load widget_tweaks %}
+
 {% block content %}
     <div class="container mt-5">
         <h1 class="mb-4 text-center">Register</h1>
         <form method="POST">
-              {% csrf_token %}
-              {{form |crispy}}
+            {% csrf_token %}
+            
+            <!-- Loop through form fields and apply the form-control class -->
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field|add_class:"form-control" }}
+                </div>
+            {% endfor %}
+            
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block mt-2 btn-sm">Login</button>
+            <button type="submit" class="btn btn-primary btn-block mt-3 btn-sm">Register</button>
         </form>
     </div>
 {% endblock content %}
