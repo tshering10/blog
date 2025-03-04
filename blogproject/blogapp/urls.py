@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
-from blogapp.views import Home_view, Detail_view, Addpost_view, Update_view, Delete_view, aboutus_view, contact_view
+from blogapp.views import Home_view, Detail_view, Addpost_view, Update_view, Delete_view, aboutus_view, contact_view, search_view
 
 urlpatterns = [
     path('', Home_view.as_view(), name = 'home_view'),
@@ -17,6 +17,8 @@ urlpatterns = [
     path('about/', aboutus_view, name='about_view'),
     
     path('contact/',contact_view, name='contact_us' ),
+    path('search/',search_view, name='search'),
+    
     # path('contact/success', contact_success, name='contact_us_success' ),
     # path('', base_view, name='home_view'),
     # path('category/', category_view, name='category'),  # Without slug

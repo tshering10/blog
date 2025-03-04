@@ -1,0 +1,20 @@
+{% extends 'blogapp/html/base.html' %}
+{% block title %}Search bar{% endblock title %}
+{% block content %}
+    
+        <h5 class = "mt-4">Search Results for "{{ query }}"</h5>
+        {% if posts %}
+            <ul class="text-decoration-none">
+                {% for post in posts %}
+                    <li>
+                        <a href="{% url "detail_view" post.id %}">{{post.title}}</a>
+                        <p>{{ post.body|slice:":100" }}...<a href="{% url 'detail_view' post.pk %}">Read more</a></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h5>No posts found.</h5>
+        {% endif %}
+    
+{% endblock content %}
+

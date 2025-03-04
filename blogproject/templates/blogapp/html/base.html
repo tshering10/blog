@@ -56,12 +56,10 @@
                 Category
               </a>
               <ul class="dropdown-menu">
-                {% for category in categories  %}
-                  <li><a class="dropdown-item" href="{% url "category_id" category.id %}">{{category.name}}</a></li>
-                  {% empty %}
-                  <li><a class="dropdown-item" href="#">No categories available</a></li>
-                  {% endfor %}
-              
+                  <li><a class="dropdown-item" href="#">Tech</a></li>
+                  <li><a class="dropdown-item" href="#">Tech</a></li>
+               
+
               </ul>
             </li>
 
@@ -77,8 +75,9 @@
 
             <!-- Search Bar -->
             <li class="nav-item">
-              <form class="d-flex" action="/search" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+              <form class="d-flex" action="{% url "search" %}" method="post">
+               {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" name="query">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
             </li>

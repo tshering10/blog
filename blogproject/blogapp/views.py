@@ -62,3 +62,20 @@ def contact_view(request):
     return render(request, 'blogapp/html/contactus.html', {'form': form})
 
 
+def search_view(request):
+    posts = []
+    query = ""
+
+    # Handle the POST request
+    if request.method == "POST":
+        query = request.POST.get('query', '').strip()  # Get the query from POST data
+
+        if query:
+            # Search for posts with titles that match the query (case-insensitive)
+            posts = Post.objects.filter(title__icontains=query)
+
+    context = {
+        'posts': posts,
+        'query': query,
+    }
+    return render(request, 'blogapp/html/search.html', context)
